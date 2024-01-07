@@ -203,6 +203,30 @@ public class CustomLinkedList<T> {
         return false;
     }
 
+    /**
+     * Note:
+     * <p>
+     * In this problem, you should use the two-pointer technique to efficiently find the k-th node from the end of the linked list.
+     */
+    public T findKthFromEnd(int k) {
+        // This is a common technique in computer science known as the 'fast-pointer / slow-pointer' or 'runner' technique,
+        // and it's a neat way of finding a position relative to the end of a list in a single pass.
+        var slow = head;
+        var fast = head;
+        for (int i = 0; i < k; i++) {
+            if (fast == null) {
+                return null;
+            }
+            fast = fast.next;
+        }
+        while (fast != null) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+        assert slow != null;
+        return slow.value;
+    }
+
     public void printList() {
         System.out.println("\nCustomLinked List:");
         var temp = head;
