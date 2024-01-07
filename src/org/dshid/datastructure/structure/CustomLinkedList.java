@@ -174,6 +174,35 @@ public class CustomLinkedList<T> {
 
     }
 
+    /**
+     * The method should be able to detect if there is a cycle or loop present in the linked list.
+     */
+    public boolean hasLoop() {
+        // Initialize slow pointer to the head of the linked list
+        var slow = head;
+
+        // Initialize fast pointer to the head of the linked list
+        var fast = head;
+
+        // Traverse the linked list with two pointers: slow and fast
+        // slow moves one node at a time, while fast moves two nodes at a time
+        while (fast != null && fast.next != null) {
+            // Move slow pointer to the next node
+            slow = slow.next;
+
+            // Move fast pointer to the next two nodes
+            fast = fast.next.next;
+
+            // If slow pointer meets fast pointer, then there is a loop in the linked list
+            if (slow == fast) {
+                return true;
+            }
+        }
+
+        // If the loop has not been detected after the traversal, then there is no loop in the linked list
+        return false;
+    }
+
     public void printList() {
         System.out.println("\nCustomLinked List:");
         var temp = head;
