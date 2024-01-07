@@ -5,7 +5,26 @@ import org.dshid.datastructure.misc.classes.Cookie;
 public class Main {
     public static void main(String[] args) {
         var customLinkedList = new CustomLinkedList<>(new Cookie("orange"));
-        System.out.println("\nLinked List:");
+        customLinkedList.append(new Cookie("green"));
+        customLinkedList.append(new Cookie("red"));
+
+        customLinkedList.printList();
+
+        System.out.println("Removed: " + customLinkedList.removeLast());
+
+        customLinkedList.printList();
+
+        customLinkedList.prepend(new Cookie("brown"));
+
+        customLinkedList.printList();
+
+        System.out.println("Removed: " + customLinkedList.removeFirst());
+        customLinkedList.printList();
+
+        customLinkedList.set(1, new Cookie("red"));
+        customLinkedList.printList();
+
+        customLinkedList.insert(1, new Cookie("blue"));
         customLinkedList.printList();
     }
 }
