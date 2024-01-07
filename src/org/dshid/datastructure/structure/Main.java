@@ -26,5 +26,7 @@ public class Main {
 
         customLinkedList.insert(1, new Cookie("blue"));
         customLinkedList.printList();
+
+        System.out.println(customLinkedList.findMiddleNodeValue());
     }
 }

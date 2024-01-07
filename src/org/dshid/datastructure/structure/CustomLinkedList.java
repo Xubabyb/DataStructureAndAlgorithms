@@ -143,6 +143,18 @@ public class CustomLinkedList<T> {
         }
     }
 
+    public T findMiddleNodeValue() {
+        if (length == 0) {
+            return null;
+        }
+        int index = length / 2;
+        if (index == 0) {
+            return head.value;
+        }
+        var result = getNode(index);
+        return result != null ? result.value : null;
+    }
+
     public void printList() {
         System.out.println("\nCustomLinked List:");
         var temp = head;
