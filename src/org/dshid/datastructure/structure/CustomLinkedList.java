@@ -143,16 +143,35 @@ public class CustomLinkedList<T> {
         }
     }
 
+    /**
+     * Note:
+     * <p>
+     * In this problem, you should use the slow and fast pointer technique (also known as Floyd's Tortoise and Hare algorithm)
+     * to find the middle element of the linked list efficiently.
+     * The key idea is to have two pointers, one that moves twice as fast as the other.
+     * By the time the fast pointer reaches the end of the linked list, the slow pointer will be at the middle.
+     */
     public T findMiddleNodeValue() {
-        if (length == 0) {
-            return null;
+        // Initialize slow pointer to the head of the linked list
+        var slow = head;
+
+        // Initialize fast pointer to the head of the linked list
+        var fast = head;
+
+        // Traverse the linked list with two pointers: slow and fast
+        // slow moves one node at a time, while fast moves two nodes at a time
+        while (fast != null && fast.next != null) {
+            // Move slow pointer to the next node
+            slow = slow.next;
+
+            // Move fast pointer to the next two nodes
+            fast = fast.next.next;
         }
-        int index = length / 2;
-        if (index == 0) {
-            return head.value;
-        }
-        var result = getNode(index);
-        return result != null ? result.value : null;
+
+        assert slow != null;
+        // Return the Node object representing the middle node of the linked list
+        return slow.value;
+
     }
 
     public void printList() {
