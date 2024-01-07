@@ -2,15 +2,18 @@ package org.dshid.datastructure.misc.classes;
 
 import java.util.Objects;
 
-public class Cookie {
+public class Cookie implements Comparable<Cookie> {
+    private final static String DEFAULT = "default";
     private String color;
 
     public Cookie(String color) {
-        this.color = color;
+        this.setColor(color);
     }
+
     public String getColor() {
-        return color;
+        return color == null ? DEFAULT : color;
     }
+
     public void setColor(String color) {
         this.color = color;
     }
@@ -30,8 +33,11 @@ public class Cookie {
 
     @Override
     public String toString() {
-        return "Cookie{" +
-                "color='" + color + '\'' +
-                '}';
+        return "Cookie{" + "color='" + color + '\'' + '}';
+    }
+
+    @Override
+    public int compareTo(Cookie o) {
+        return this.color.compareTo(o.color);
     }
 }

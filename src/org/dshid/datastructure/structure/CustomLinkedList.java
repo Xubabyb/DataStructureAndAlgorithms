@@ -1,7 +1,7 @@
 package org.dshid.datastructure.structure;
 
 
-public class CustomLinkedList<T> {
+public class CustomLinkedList<T extends Comparable<T>> {
     private Node<T> head;
     private Node<T> tail;
     private int length;
@@ -227,6 +227,38 @@ public class CustomLinkedList<T> {
         return slow.value;
     }
 
+    /**
+     * In this problem,
+     * https://leetcode.com/problems/partition-list/description/
+     */
+    public void partitionList(T value) {
+        if (head == null) {
+            return;
+        }
+        var dummy_1 = new Node<T>();
+        var dummy_2 = new Node<T>();
+
+        var prev_1 = dummy_1;
+        var prev_2 = dummy_2;
+
+        var current = head;
+
+        while (current != null) {
+            if (current.value.compareTo(value) >= 0) {
+                prev_1.next = current;
+                prev_1 = current;
+            } else {
+                prev_2.next = current;
+                prev_2 = current;
+            }
+            current = current.next;
+        }
+
+        prev_1.next = null;
+        prev_2.next = dummy_1.next;
+        head = dummy_2.next;
+    }
+
     public void printList() {
         System.out.println("\nCustomLinked List:");
         var temp = head;
@@ -264,6 +296,9 @@ public class CustomLinkedList<T> {
 
         V value;
         Node<V> next;
+
+        public Node() {
+        }
 
         Node(V value) {
             this.value = value;
