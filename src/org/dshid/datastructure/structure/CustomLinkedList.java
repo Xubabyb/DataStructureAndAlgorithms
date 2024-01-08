@@ -298,6 +298,8 @@ public class CustomLinkedList<T extends Comparable<T>> {
             after.next = prev.next;
             prev.next = after;
         }
+        head = dummy.next;
+
     }
 
 
