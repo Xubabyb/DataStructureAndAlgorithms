@@ -279,6 +279,28 @@ public class CustomLinkedList<T extends Comparable<T>> {
         }
     }
 
+    public void reverseBetween(int start, int end) {
+        if (head == null) return;
+        Node<T> dummy = new Node<>();
+        dummy.next = head;
+        var prev = dummy;
+        for (int i = 0; i < start - 1; i++) {
+            prev = prev.next;
+        }
+        var current = prev.next;
+        var after = current.next;
+
+
+        for (int i = start; i < end; i++) {
+            //TODO Нет сил описывать это, лучше рисовать, не забыть прикрепить графику
+            after = current.next;
+            current.next = after.next;
+            after.next = prev.next;
+            prev.next = after;
+        }
+    }
+
+
     public void printList() {
         System.out.println("\nCustomLinked List:");
         var temp = head;

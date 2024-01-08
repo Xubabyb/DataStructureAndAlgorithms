@@ -76,5 +76,12 @@ public class Main {
         customLinkedList.printList();
         System.out.println("#####################################################################################");
 
+        customLinkedList.printList();
+        System.out.println("______________________reverseBetween__________________________________________________");
+
+        customLinkedList.reverseBetween(2,6);
+        customLinkedList.printList();
+        System.out.println("#####################################################################################");
+
     }
 }
