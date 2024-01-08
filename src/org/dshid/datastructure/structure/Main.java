@@ -67,5 +67,14 @@ public class Main {
         intLL.partitionList(48); // 48 -> 12,26,3,100,50,88,48,63
         intLL.printList();
         System.out.println("#####################################################################################");
+
+        customLinkedList.append(new Cookie("black"));
+        customLinkedList.append(new Cookie("white"));
+        customLinkedList.printList();
+        System.out.println("_____________________________________________________________________________________");
+        customLinkedList.removeDuplicates();
+        customLinkedList.printList();
+        System.out.println("#####################################################################################");
+
     }
 }

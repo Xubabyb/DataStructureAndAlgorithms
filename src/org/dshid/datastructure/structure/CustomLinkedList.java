@@ -1,6 +1,9 @@
 package org.dshid.datastructure.structure;
 
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class CustomLinkedList<T extends Comparable<T>> {
     private Node<T> head;
     private Node<T> tail;
@@ -257,6 +260,23 @@ public class CustomLinkedList<T extends Comparable<T>> {
         prev_1.next = null;
         prev_2.next = dummy_1.next;
         head = dummy_2.next;
+    }
+
+    public void removeDuplicates() {
+        Set<T> values = new HashSet<>();
+        Node<T> prev = null;
+        var current = head;
+        while (current != null) {
+            if (!values.contains(current.value)) {
+                values.add(current.value);
+                prev = current;
+                current = current.next;
+                continue;
+            }
+            prev.next = current.next;
+            length--;
+            current = current.next;
+        }
     }
 
     public void printList() {
