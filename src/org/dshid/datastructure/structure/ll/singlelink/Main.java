@@ -1,4 +1,4 @@
-package org.dshid.datastructure.structure.ll.single;
+package org.dshid.datastructure.structure.ll.singlelink;
 
 import org.dshid.datastructure.misc.classes.Cookie;
 
