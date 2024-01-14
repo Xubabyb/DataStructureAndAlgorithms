@@ -169,12 +169,13 @@ public class DoublyLinkedList {
         return temp;
     }
 
-    public void swapFirstLast() {
+    public void swapValueFirstLast() {
         if (length < 2) return;
         int temp = head.value;
         head.value = tail.value;
         tail.value = temp;
     }
+
     public void reverse() {
         // 'current' starts at the head of the list. This is the starting point
         // for the reversal process.
