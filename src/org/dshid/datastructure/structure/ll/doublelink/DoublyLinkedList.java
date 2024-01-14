@@ -51,9 +51,9 @@ public class DoublyLinkedList {
         System.out.println("Length: " + length);
     }
 
-    public void append (int value) {
+    public void append(int value) {
         Node newNode = new Node(value);
-        if(length == 0) {
+        if (length == 0) {
             head = newNode;
             tail = newNode;
         } else {
@@ -65,7 +65,7 @@ public class DoublyLinkedList {
     }
 
     public Node removeLast() {
-        if(length == 0) return null;
+        if (length == 0) return null;
         Node temp = tail;
         if (length == 1) {
             head = null;
@@ -81,7 +81,7 @@ public class DoublyLinkedList {
 
     public void prepend(int value) {
         Node newNode = new Node(value);
-        if(length == 0) {
+        if (length == 0) {
             head = newNode;
             tail = newNode;
         } else {
@@ -93,9 +93,9 @@ public class DoublyLinkedList {
     }
 
     public Node removeFirst() {
-        if(length == 0) return null;
+        if (length == 0) return null;
         Node temp = head;
-        if(length == 1) {
+        if (length == 1) {
             head = null;
             tail = null;
         } else {
@@ -110,7 +110,7 @@ public class DoublyLinkedList {
     public Node get(int index) {
         if (index < 0 || index >= length) return null;
         Node temp = head;
-        if (index < length/2) {
+        if (index < length / 2) {
             for (int i = 0; i < index; i++) {
                 temp = temp.next;
             }
@@ -125,7 +125,7 @@ public class DoublyLinkedList {
 
     public boolean set(int index, int value) {
         Node temp = get(index);
-        if(temp != null) {
+        if (temp != null) {
             temp.value = value;
             return true;
         }
@@ -133,12 +133,12 @@ public class DoublyLinkedList {
     }
 
     public boolean insert(int index, int value) {
-        if(index < 0 || index > length) return false;
-        if(index == 0) {
+        if (index < 0 || index > length) return false;
+        if (index == 0) {
             prepend(value);
             return true;
         }
-        if(index == length) {
+        if (index == length) {
             append(value);
             return true;
         }
@@ -154,9 +154,9 @@ public class DoublyLinkedList {
     }
 
     public Node remove(int index) {
-        if(index < 0 || index >= length) return null;
-        if(index == 0) return removeFirst();
-        if(index == length - 1) return removeLast();
+        if (index < 0 || index >= length) return null;
+        if (index == 0) return removeFirst();
+        if (index == length - 1) return removeLast();
 
         Node temp = get(index);
 
@@ -167,6 +167,47 @@ public class DoublyLinkedList {
 
         length--;
         return temp;
+    }
+
+    public void swapFirstLast() {
+        if (length < 2) return;
+        int temp = head.value;
+        head.value = tail.value;
+        tail.value = temp;
+    }
+    public void reverse() {
+        // 'current' starts at the head of the list. This is the starting point
+        // for the reversal process.
+        Node current = head;
+
+        // 'temp' is a temporary variable used for swapping nodes. It is initially
+        // set to null since we haven't started the swapping process yet.
+        Node temp = null;
+
+        // We enter a loop that will continue as long as 'current' is not null.
+        // This loop goes through each node in the list.
+        while (current != null) {
+            // Store the previous node of 'current' in 'temp'.
+            // This is needed because we will be overwriting 'current.prev' next,
+            // and we don't want to lose this reference.
+            temp = current.prev;
+
+            // The next two lines are where we swap the 'next' and 'prev' references
+            // of the 'current' node. This effectively reverses the direction of the
+            // links for 'current'.
+            current.prev = current.next; // 'prev' now points to what used to be 'next'
+            current.next = temp;         // 'next' now points to what used to be 'prev'
+
+            // Move to the next node in the original list. After the swap, the original
+            // 'next' node is now in 'current.prev', so we update 'current' to this node.
+            current = current.prev;
+        }
+
+        // After the while loop, the list is reversed, but our 'head' and 'tail' pointers
+        // are still pointing to the original head and tail. So we need to swap them.
+        temp = head;   // Store the original head in 'temp'
+        head = tail;   // Update head to be the original tail
+        tail = temp;   // Update tail to be what was originally the head
     }
 
 }
