@@ -1,4 +1,4 @@
-package org.dshid.datastructure.structure.ll.doublelink;
+package org.dshid.datastructure.structure.linkedlist.doublelink;
 
 public class Main {
     public static void main(String[] args) {
